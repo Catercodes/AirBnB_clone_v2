@@ -119,14 +119,20 @@ class HBNBCommand(cmd.Cmd):
         arugments = args.split()
         class_name = args[0]
         parameters = args[1:]
-        if not args:
+        if not arugments:
+        #if not args:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+        elif class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
+            #print(__class__.__name__)
             return
-        params = {}
-        for key, value in params.items():
+        params_dict = {}
+        for parameter in parameters:
+            key_value = parameter.split('=')
+            params_dict[key_value[0]]= key_value[1]
+        for key, value in params_dict.items():
+        #for key, value in parameters.items():
             if value.startwith('"') and value.endswith('"'):
             #key = params.split('=')
             #value = value.strip('"')
@@ -137,12 +143,11 @@ class HBNBCommand(cmd.Cmd):
 
 
             elif '.' in value:
-                value = float(value)
-                return
+                    value = float(value)
+                    return
             if value.isdigit():
-                value = int(value)
-                return
-            params[key] = value
+                    value = int(value)
+                    return
         new_instance = HBNBCommand.classes[args]()
         storage.save()
         print(new_instance.id)
