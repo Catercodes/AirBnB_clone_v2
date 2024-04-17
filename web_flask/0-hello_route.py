@@ -1,11 +1,16 @@
 #!/usr/bin/python3
-""" import flask"""
+"""My web application"""
 from flask import Flask
+
 
 app = Flask(__name__)
 
 
-@app.route("/", strict_slashes=False)
-def hello_world():
-    """Script that start flask web application"""
+@app.route('/', strict_slashes=False)
+def home():
+    """home route function"""
     return "Hello HBNB!"
+
+
+if __name__ == "__main__":
+    app.run()
