@@ -26,12 +26,12 @@ def text(text):
 @app.route('/python/<text>', strict_slashes=False)
 def python_text(text):
     new_text = text.replace('_', ' ')
-    return f"python {new_text}"
+    return f"Python {new_text}"
 
 
 @app.route('/python', strict_slashes=False)
 def python():
-    return "python is cool"
+    return "Python is cool"
 
 
 if __name__ == "__main__":
